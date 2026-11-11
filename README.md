@@ -1,18 +1,18 @@
 # creditapp-evals
 
-A standalone eval harness and scorecard for agentic credit products. It proves an agent's answers are right, grounded, and cheap — not just that it ran.
+A standalone eval harness and scorecard for agentic credit products. It proves an agent's answers are right, grounded, and cheap, not just that it ran.
 
 ## Why this exists
 
-Anyone can demo an agent. Very few can prove it works. This is the proof layer: a golden set of synthetic covenant cases with known right answers, a deterministic grader that checks every number against a calculation or a verbatim citation (never an LLM judging another LLM), and a scorecard showing accuracy, abstention, and the dangerous failure modes — hallucinated numbers and false resolves. A failing eval blocks a release.
+Anyone can demo an agent. Very few can prove it works. This is the proof layer: a golden set of synthetic covenant cases with known right answers, a deterministic grader that checks every number against a calculation or a verbatim citation (never an LLM judging another LLM), and a scorecard showing accuracy, abstention, and the dangerous failure modes, hallucinated numbers and false resolves. A failing eval blocks a release.
 
-**This is a hub, not a single-product tool.** `cases/` and `recordings/` are namespaced per product (`creditscout/` today), graded by one shared grader and shown on one shared dashboard. The next phase adds `spreadsense/` as a second subfolder under the same harness — nothing here is CreditScout-specific.
+**This is a hub, not a single-product tool.** `cases/` and `recordings/` are namespaced per product (`creditscout/` today), graded by one shared grader and shown on one shared dashboard. The next phase adds `spreadsense/` as a second subfolder under the same harness, nothing here is CreditScout-specific.
 
 ## Why no LLM-as-judge
 
-Grading agent output with another LLM has the same failure mode one level up: the judge can be wrong with no more traceability than the thing it's judging, and it can drift between runs on identical input — which breaks a CI gate that's supposed to fail the same way every time on the same code. v1's grader is pure, deterministic code: it checks numbers (after normalization, not as text) and whether a cited source actually traces. See [the case study](./docs/case-study.md) for why "compare as text" is the wrong call and quietly fails every well-formed explanation.
+Grading agent output with another LLM has the same failure mode one level up: the judge can be wrong with no more traceability than the thing it's judging, and it can drift between runs on identical input, which breaks a CI gate that's supposed to fail the same way every time on the same code. v1's grader is pure, deterministic code: it checks numbers (after normalization, not as text) and whether a cited source actually traces. See [the case study](./docs/case-study.md) for why "compare as text" is the wrong call and quietly fails every well-formed explanation.
 
-## Scope — v1
+## Scope, v1
 
 - 15 golden cases for CreditScout covenant investigation, 3 each across 5 buckets: true breach, amendment saves it, reporting discrepancy, missing evidence (must abstain), performing / no exception
 - Deterministic grader, no LLM-as-judge
@@ -32,12 +32,12 @@ npm run eval -- --product creditscout
 
 ## Scorecard
 
-**Live:** [creditapp-evals.vercel.app](https://creditapp-evals.vercel.app). [Case study →](./docs/case-study.md) covers a real failure this harness caught during its own build, and the fix. [Oracle sign-off →](./docs/oracle-signoff.md) — the 15 cases are owner-reviewed and approved; the recorded agent responses they're graded against are v1 stand-in data, not a live agent run (see Scope below).
+**Live:** [creditapp-evals.vercel.app](https://creditapp-evals.vercel.app). [Case study →](./docs/case-study.md) covers a real failure this harness caught during its own build, and the fix. [Oracle sign-off →](./docs/oracle-signoff.md): the 15 cases are owner-reviewed and approved; the recorded agent responses they're graded against are v1 stand-in data, not a live agent run (see Scope below).
 
 ## Repo structure
 
 ```
-cases/<product>/*.json         golden cases — inputs, expected verdict, DSCR, citations
+cases/<product>/*.json         golden cases, inputs, expected verdict, DSCR, citations
 recordings/<product>/*.json    recorded agent responses graded against the cases
 grader/grade.mjs               deterministic grader + failure taxonomy
 grader/grade.test.js           grader unit tests (node:test, no framework)
