@@ -1,0 +1,9 @@
+{
+  "id": "costko-wholesale-performing",
+  "bucket": "performing-no-exception",
+  "loan": "Costko Wholesale",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.35, "addbacks": [] },
+  "financials": { "ebitda": 3200000, "debt_service": 2064516, "reported_dscr": 1.55 },
+  "expected": { "verdict": "no-breach", "dscr": 1.55, "citations": ["Costko Wholesale compliance certificate — clean"] }
+}

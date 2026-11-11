@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>creditapp-evals — scorecard</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f8fa; color: #1e293b; }
+  header { padding: 32px 24px 16px; max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: #64748b; font-size: 13px; }
+  main { max-width: 980px; margin: 0 auto; padding: 0 24px 64px; }
+  .product-block { margin-top: 28px; }
+  .product-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 14px; }
+  .card .label { font-size: 11px; color: #64748b; margin-bottom: 4px; }
+  .card .value { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .ok { color: #16a34a; }
+  .bad { color: #dc2626; }
+  table { width: 100%; border-collapse: collapse; background: white; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #f1f5f9; }
+  th { background: #f8fafc; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: #64748b; }
+  tr:last-child td { border-bottom: none; }
+  .pass { color: #16a34a; font-weight: 600; }
+  .fail { color: #dc2626; font-weight: 600; }
+  .label-tag { font-family: ui-monospace, monospace; font-size: 11px; background: #fef2f2; color: #991b1b; padding: 2px 6px; border-radius: 4px; }
+  .empty { color: #94a3b8; font-size: 13px; padding: 24px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>creditapp-evals</h1>
+  <div class="sub" id="meta">loading…</div>
+</header>
+<main id="main"></main>
+<script>
+async function load() {
+  const main = document.getElementById('main');
+  try {
+    const res = await fetch('./data/latest.json');
+    if (!res.ok) throw new Error('no data yet');
+    const data = await res.json();
+    document.getElementById('meta').textContent =
+      'Last run: ' + new Date(data.generated_at).toLocaleString();
+
+    main.innerHTML = data.products.map(p => renderProduct(p)).join('');
+  } catch (e) {
+    document.getElementById('meta').textContent = 'No eval run recorded yet.';
+    main.innerHTML = '<div class="empty">Run `npm run eval` to generate the scorecard.</div>';
+  }
+}
+
+function pct(n) { return (n * 100).toFixed(1) + '%'; }
+
+function renderProduct(p) {
+  const a = p.aggregate;
+  const rows = p.results.map(r => `
+    <tr>
+      <td>${r.case_id}</td>
+      <td>${r.bucket || ''}</td>
+      <td class="${r.pass ? 'pass' : 'fail'}">${r.pass ? 'PASS' : 'FAIL'}</td>
+      <td>${r.failure_label ? `<span class="label-tag">${r.failure_label}</span>` : '—'}</td>
+    </tr>`).join('');
+
+  return `
+    <div class="product-block">
+      <div class="product-title">${p.product} — ${p.case_count} cases</div>
+      <div class="cards">
+        <div class="card"><div class="label">Verdict accuracy</div><div class="value ${a.verdict_accuracy >= 0.9 ? 'ok' : 'bad'}">${pct(a.verdict_accuracy)}</div></div>
+        <div class="card"><div class="label">Citation accuracy</div><div class="value">${pct(a.citation_accuracy)}</div></div>
+        <div class="card"><div class="label">Hallucination rate</div><div class="value ${a.hallucination_rate === 0 ? 'ok' : 'bad'}">${pct(a.hallucination_rate)}</div></div>
+        <div class="card"><div class="label">False resolve rate</div><div class="value ${a.false_resolve_rate === 0 ? 'ok' : 'bad'}">${pct(a.false_resolve_rate)}</div></div>
+        <div class="card"><div class="label">Abstentions</div><div class="value">${a.abstention_count}</div></div>
+      </div>
+      <table>
+        <thead><tr><th>Case</th><th>Bucket</th><th>Result</th><th>Failure label</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
+
+load();
+</script>
+</body>
+</html>

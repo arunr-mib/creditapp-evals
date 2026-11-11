@@ -1,0 +1,1 @@
+{ "case_id": "northgate-breach-expired-amendment", "verdict": "breach", "dscr": 1.09, "citations": ["Northgate Foods Amendment No. 1 (expired prior to test date)"], "explanation": "Amendment No. 1 expired before the test date and no longer governs. Without it, DSCR is 1.09x against the 1.20x minimum. This is a breach." }

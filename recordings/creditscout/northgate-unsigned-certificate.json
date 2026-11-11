@@ -1,0 +1,1 @@
+{ "case_id": "northgate-unsigned-certificate", "verdict": "breach", "dscr": 1.09, "citations": ["Northgate Foods Credit Agreement §6.4"], "explanation": "Computed DSCR is 1.09x against a 1.20x minimum under §6.4. The certificate is unsigned, but the underlying financials are on file and sufficient to compute the ratio independently. This is a breach." }

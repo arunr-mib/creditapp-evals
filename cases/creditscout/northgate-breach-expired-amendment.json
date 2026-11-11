@@ -1,0 +1,9 @@
+{
+  "id": "northgate-breach-expired-amendment",
+  "bucket": "true-breach",
+  "loan": "Northgate Foods",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.20, "addbacks": [] },
+  "financials": { "ebitda": 760000, "debt_service": 700000, "reported_dscr": 1.09 },
+  "expected": { "verdict": "breach", "dscr": 1.09, "citations": ["Northgate Foods Amendment No. 1 (expired prior to test date)"] }
+}

@@ -1,0 +1,200 @@
+{
+  "generated_at": "2026-11-11T20:44:40.219Z",
+  "products": [
+    {
+      "product": "creditscout",
+      "results": [
+        {
+          "case_id": "coastal-marine-amendment-saves",
+          "bucket": "amendment-saves-it",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "coastal-marine-breach",
+          "bucket": "true-breach",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "coastal-marine-no-certificate",
+          "bucket": "missing-evidence-abstain",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "coastal-marine-wrong-period",
+          "bucket": "reporting-discrepancy",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "costko-wholesale-performing",
+          "bucket": "performing-no-exception",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "dokusign-performing",
+          "bucket": "performing-no-exception",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "harbor-logistics-amendment-saves",
+          "bucket": "amendment-saves-it",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "harbor-logistics-breach-no-addback",
+          "bucket": "true-breach",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "harbor-logistics-unsigned-amendment",
+          "bucket": "missing-evidence-abstain",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "harbor-logistics-wrong-addback",
+          "bucket": "reporting-discrepancy",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "northgate-amendment-boarding-lag",
+          "bucket": "amendment-saves-it",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "northgate-breach-expired-amendment",
+          "bucket": "true-breach",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "northgate-missing-period-financials",
+          "bucket": "missing-evidence-abstain",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "northgate-unsigned-certificate",
+          "bucket": "reporting-discrepancy",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        },
+        {
+          "case_id": "peats-coffee-performing",
+          "bucket": "performing-no-exception",
+          "pass": true,
+          "verdict_match": true,
+          "dscr_match": true,
+          "citation_match": true,
+          "failure_label": null,
+          "honest": true,
+          "harmless": true,
+          "helpful": true
+        }
+      ],
+      "aggregate": {
+        "total": 15,
+        "verdict_accuracy": 1,
+        "citation_accuracy": 1,
+        "honest_rate": 1,
+        "hallucination_rate": 0,
+        "false_resolve_rate": 0,
+        "abstention_count": 3
+      },
+      "case_count": 15
+    }
+  ]
+}

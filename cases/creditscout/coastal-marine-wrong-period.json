@@ -1,0 +1,9 @@
+{
+  "id": "coastal-marine-wrong-period",
+  "bucket": "reporting-discrepancy",
+  "loan": "Coastal Marine",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.25, "addbacks": [] },
+  "financials": { "ebitda": 1480000, "debt_service": 1196428, "reported_dscr": 1.12, "reported_period": "2026Q1 (prior quarter, not the test period)" },
+  "expected": { "verdict": "no-breach", "dscr": 1.24, "citations": ["Coastal Marine compliance certificate 2026Q2"] }
+}

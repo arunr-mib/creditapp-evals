@@ -1,0 +1,9 @@
+{
+  "id": "northgate-missing-period-financials",
+  "bucket": "missing-evidence-abstain",
+  "loan": "Northgate Foods",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.20, "addbacks": [] },
+  "financials": { "ebitda": null, "debt_service": 700000, "note": "financials missing the trailing-twelve-month EBITDA breakdown" },
+  "expected": { "verdict": "abstain", "dscr": null, "citations": [] }
+}

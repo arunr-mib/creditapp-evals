@@ -1,0 +1,1 @@
+{ "case_id": "northgate-missing-period-financials", "verdict": "abstain", "dscr": null, "citations": [], "explanation": "The trailing-twelve-month EBITDA breakdown needed to compute DSCR is missing from the financials on file. Abstaining and requesting the missing schedule." }

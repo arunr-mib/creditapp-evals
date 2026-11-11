@@ -1,0 +1,9 @@
+{
+  "id": "coastal-marine-breach",
+  "bucket": "true-breach",
+  "loan": "Coastal Marine",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.25, "addbacks": [] },
+  "financials": { "ebitda": 1340000, "debt_service": 1196428, "reported_dscr": 1.12 },
+  "expected": { "verdict": "breach", "dscr": 1.12, "citations": ["Coastal Marine Credit Agreement §7.11(a)"] }
+}

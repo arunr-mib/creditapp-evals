@@ -1,0 +1,9 @@
+{
+  "id": "harbor-logistics-wrong-addback",
+  "bucket": "reporting-discrepancy",
+  "loan": "Harbor Logistics",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.30, "addbacks": [{ "name": "one-time ERP migration cost", "amount": 150000, "cap": 150000, "source": "Amendment No. 1 §2(b)" }] },
+  "financials": { "ebitda": 980000, "debt_service": 870000, "reported_dscr": 1.30, "note": "borrower applied the add-back twice" },
+  "expected": { "verdict": "breach", "dscr": 1.13, "citations": ["Harbor Logistics Amendment No. 1 §2(b)"] }
+}

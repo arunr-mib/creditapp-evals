@@ -1,0 +1,9 @@
+{
+  "id": "dokusign-performing",
+  "bucket": "performing-no-exception",
+  "loan": "Dokusign Inc",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.40, "addbacks": [] },
+  "financials": { "ebitda": 2100000, "debt_service": 1312500, "reported_dscr": 1.60 },
+  "expected": { "verdict": "no-breach", "dscr": 1.60, "citations": ["Dokusign Inc compliance certificate — clean"] }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "northgate-amendment-boarding-lag",
+  "bucket": "amendment-saves-it",
+  "loan": "Northgate Foods",
+  "synthetic": true,
+  "note": "covenant-boarding-lag twist: amendment on file, not yet boarded into system of record",
+  "terms": { "min_dscr": 1.20, "addbacks": [{ "name": "commodity-price hedge loss", "amount": 95000, "cap": 95000, "source": "Northgate Foods Amendment No. 2 §4 (on file, not yet boarded)" }] },
+  "financials": { "ebitda": 855000, "debt_service": 700000, "reported_dscr": 1.09 },
+  "expected": { "verdict": "no-breach", "dscr": 1.22, "citations": ["Northgate Foods Amendment No. 2 §4"] }
+}

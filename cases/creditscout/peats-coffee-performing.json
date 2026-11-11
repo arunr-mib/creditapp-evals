@@ -1,0 +1,9 @@
+{
+  "id": "peats-coffee-performing",
+  "bucket": "performing-no-exception",
+  "loan": "Peat's Coffee Company",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.10, "addbacks": [] },
+  "financials": { "ebitda": 540000, "debt_service": 410000, "reported_dscr": 1.32 },
+  "expected": { "verdict": "no-breach", "dscr": 1.32, "citations": ["Peat's Coffee Company compliance certificate — clean"] }
+}

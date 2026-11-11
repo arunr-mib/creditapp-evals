@@ -1,0 +1,9 @@
+{
+  "id": "coastal-marine-amendment-saves",
+  "bucket": "amendment-saves-it",
+  "loan": "Coastal Marine",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.25, "addbacks": [{ "name": "fuel-hedging loss", "amount": 800000, "cap": null, "source": "Amendment No. 2 §3" }] },
+  "financials": { "ebitda": 4980000, "debt_service": 4446154, "reported_dscr": 1.12 },
+  "expected": { "verdict": "no-breach", "dscr": 1.30, "citations": ["Coastal Marine Amendment No. 2 §3"] }
+}

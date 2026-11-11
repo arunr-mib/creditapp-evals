@@ -1,0 +1,1 @@
+{ "case_id": "harbor-logistics-wrong-addback", "verdict": "breach", "dscr": 1.13, "citations": ["Harbor Logistics Amendment No. 1 §2(b)"], "explanation": "The borrower's reported 1.30x double-counts the $150,000 add-back. Recomputed DSCR with the add-back applied once is 1.13x against the 1.30x minimum. This is a breach." }

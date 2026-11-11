@@ -1,0 +1,9 @@
+{
+  "id": "northgate-unsigned-certificate",
+  "bucket": "reporting-discrepancy",
+  "loan": "Northgate Foods",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.20, "addbacks": [] },
+  "financials": { "ebitda": 760000, "debt_service": 700000, "reported_dscr": 1.09, "note": "certificate unsigned by borrower" },
+  "expected": { "verdict": "breach", "dscr": 1.09, "citations": ["Northgate Foods Credit Agreement §6.4"] }
+}

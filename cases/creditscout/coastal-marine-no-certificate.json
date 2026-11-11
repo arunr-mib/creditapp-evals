@@ -1,0 +1,9 @@
+{
+  "id": "coastal-marine-no-certificate",
+  "bucket": "missing-evidence-abstain",
+  "loan": "Coastal Marine",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.25, "addbacks": [] },
+  "financials": { "ebitda": null, "debt_service": null, "note": "no compliance certificate on file for this period" },
+  "expected": { "verdict": "abstain", "dscr": null, "citations": [] }
+}

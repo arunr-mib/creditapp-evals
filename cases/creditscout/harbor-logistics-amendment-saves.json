@@ -1,0 +1,9 @@
+{
+  "id": "harbor-logistics-amendment-saves",
+  "bucket": "amendment-saves-it",
+  "loan": "Harbor Logistics",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.30, "addbacks": [{ "name": "one-time ERP migration cost", "amount": 150000, "cap": 150000, "source": "Amendment No. 1 §2(b)" }] },
+  "financials": { "ebitda": 1130000, "debt_service": 870000, "reported_dscr": 1.13 },
+  "expected": { "verdict": "no-breach", "dscr": 1.30, "citations": ["Harbor Logistics Amendment No. 1 §2(b)"] }
+}

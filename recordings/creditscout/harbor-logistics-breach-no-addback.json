@@ -1,0 +1,1 @@
+{ "case_id": "harbor-logistics-breach-no-addback", "verdict": "breach", "dscr": 1.13, "citations": ["Harbor Logistics Credit Agreement §6.4"], "explanation": "Computed DSCR is 1.13x against a 1.30x minimum required under §6.4. No add-back is on file. This is a breach." }

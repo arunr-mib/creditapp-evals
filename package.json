@@ -1,0 +1,11 @@
+{
+  "name": "creditapp-evals",
+  "version": "1.0.0",
+  "description": "A standalone eval harness and scorecard for agentic credit products — proves an agent's answers are right, grounded, and cheap, not just that it ran.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test grader/grade.test.js",
+    "eval": "node runner/run.mjs"
+  }
+}

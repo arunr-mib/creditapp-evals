@@ -1,0 +1,9 @@
+{
+  "id": "harbor-logistics-breach-no-addback",
+  "bucket": "true-breach",
+  "loan": "Harbor Logistics",
+  "synthetic": true,
+  "terms": { "min_dscr": 1.30, "addbacks": [] },
+  "financials": { "ebitda": 980000, "debt_service": 870000, "reported_dscr": 1.13 },
+  "expected": { "verdict": "breach", "dscr": 1.13, "citations": ["Harbor Logistics Credit Agreement §6.4"] }
+}
