@@ -32,7 +32,7 @@ npm run eval -- --product creditscout
 
 ## Scorecard
 
-**Live:** [creditapp-evals.vercel.app](https://creditapp-evals.vercel.app). [Case study →](./docs/case-study.md) covers a real failure this harness caught during its own build, and the fix.
+**Live:** [creditapp-evals.vercel.app](https://creditapp-evals.vercel.app). [Case study →](./docs/case-study.md) covers a real failure this harness caught during its own build, and the fix. [Oracle sign-off →](./docs/oracle-signoff.md) — the 15 cases are owner-reviewed and approved; the recorded agent responses they're graded against are v1 stand-in data, not a live agent run (see Scope below).
 
 ## Repo structure
 
