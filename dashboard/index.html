@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>creditapp-evals — scorecard</title>
+<title>creditapp-evals: scorecard</title>
 <style>
   :root { color-scheme: light; }
   * { box-sizing: border-box; }
@@ -67,7 +67,7 @@ function renderProduct(p) {
 
   return `
     <div class="product-block">
-      <div class="product-title">${p.product} — ${p.case_count} cases</div>
+      <div class="product-title">${p.product}: ${p.case_count} cases</div>
       <div class="cards">
         <div class="card"><div class="label">Verdict accuracy</div><div class="value ${a.verdict_accuracy >= 0.9 ? 'ok' : 'bad'}">${pct(a.verdict_accuracy)}</div></div>
         <div class="card"><div class="label">Citation accuracy</div><div class="value">${pct(a.citation_accuracy)}</div></div>
