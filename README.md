@@ -32,7 +32,7 @@ npm run eval -- --product creditscout
 
 ## Scorecard
 
-Live: a static page under `dashboard/`, deployed on Vercel. [Case study →](./docs/case-study.md) covers a real failure this harness caught during its own build, and the fix.
+**Live:** [creditapp-evals.vercel.app](https://creditapp-evals.vercel.app). [Case study →](./docs/case-study.md) covers a real failure this harness caught during its own build, and the fix.
 
 ## Repo structure
 
