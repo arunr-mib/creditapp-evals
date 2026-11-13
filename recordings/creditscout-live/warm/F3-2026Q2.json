@@ -1,0 +1,58 @@
+{
+  "case_id": "F3-2026Q2",
+  "pass": "warm",
+  "verdict": "breach",
+  "dscr": 1.08,
+  "citations": [
+    "CA §7.11",
+    "CC Q2 2026 §3"
+  ],
+  "explanation": "The Credit Agreement §7.11(b) states no add-back shall be made to Consolidated EBITDA for DSCR except as expressly amended in writing. The borrower reported an add-back of 530,000 'owner compensation normalisation' in the Compliance Certificate §3 and Financials §2. Our calculation with boarded terms (no add-backs) yields DSCR 1.08, below the required 1.25. The borrower's figure 1.31 shown in the Compliance Certificate §2 includes this add-back which is unsupported by any executed amendment or waiver on file, so the borrower's reported DSCR is not consistent with the agreement terms.",
+  "decided_by": "agent",
+  "code_outcome": "exception",
+  "recommendation": "escalate",
+  "agent_raw_recommendation": "escalate",
+  "verdict_changed_by_guardrail": false,
+  "explanation_source": "agent",
+  "mapping_flag": null,
+  "suggested_tag": "true_breach",
+  "confidence_basis": "The borrower applied an add-back for \"owner compensation normalisation\" of 530,000 not permitted by the Credit Agreement clause 7.11(b), which forbids add-backs except as expressly amended in writing, and no such amendment or waiver is on file.",
+  "claims": [
+    {
+      "text": "The Borrower shall not permit the Debt Service Coverage Ratio, tested as of the last day of each fiscal quarter on a trailing four-quarter basis, to be less than 1.25 to 1.00.",
+      "quote": "§7.11 Debt Service Coverage Ratio.\n(a) Minimum Ratio. The Borrower shall not permit the Debt Service Coverage Ratio, tested as of the last day of each fiscal quarter on a trailing four-quarter basis, to be less than 1.25 to 1.00.",
+      "citation": "CA §7.11"
+    },
+    {
+      "text": "No add-back or other adjustment shall be made to Consolidated EBITDA for purposes of this Section 7.11, except as expressly provided in this Agreement as amended in writing.",
+      "quote": "(b) Adjustments. No add-back or other adjustment shall be made to Consolidated EBITDA for purposes of this Section 7.11, except as expressly provided in this Agreement as amended in writing.",
+      "citation": "CA §7.11"
+    },
+    {
+      "text": "Add-back applied \u2014 owner compensation normalisation: 530,000",
+      "quote": "§3 Add-Backs Applied\nAdd-back applied \u2014 owner compensation normalisation: 530,000",
+      "citation": "CC Q2 2026 §3"
+    }
+  ],
+  "guardrail_notes": [],
+  "steps": 7,
+  "provenance": {
+    "source": "CreditScout recorded eval run (real run output, not a stand-in)",
+    "run_id": "eval-20261113T162519Z-warm",
+    "pass": "warm",
+    "eval_run_row_id": "df259d16-b035-4fba-8a02-34bde47ff43b",
+    "pass_recorded_at": "2026-11-13T16:30:24.690063+00:00",
+    "creditscout_commit": "46f368c",
+    "orchestrator_model": "gpt-4.1-mini",
+    "specialist_model": "gpt-5-mini",
+    "exported_at": "2026-11-13T16:38:22.962Z",
+    "test_id": "261e66d4-e34b-4016-875f-a308f68a6c2e",
+    "exception_id": "bd9ad53b-f9ce-4870-aa56-4ed048c60b09",
+    "casefile_id": "aa053736-545d-45ab-b593-13ac7c796cb8",
+    "governing_calc_id": "b6ba4a93-b2e7-42fc-afe2-9691128451f8",
+    "recorded_at": "2026-11-13T16:27:14.334988+00:00",
+    "computed_dscr": 1.08,
+    "reported_dscr": 1.31,
+    "threshold": 1.25
+  }
+}

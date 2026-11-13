@@ -1,0 +1,70 @@
+{
+  "case_id": "F1-2026Q2",
+  "pass": "cold",
+  "verdict": "breach",
+  "dscr": 1.12,
+  "citations": [
+    "CA §7.11",
+    "CA §1.01",
+    "Amd 2 §3",
+    "Fin Q2 2026 §2"
+  ],
+  "explanation": "The Credit Agreement §7.11 sets min DSCR 1.25 on trailing twelve months to 2026-06-30, with numerator base Consolidated EBITDA minus unfinanced capex and cash taxes, denominator scheduled principal plus cash interest. Our calculation on boarded terms (no addbacks) yields DSCR 1.12 fail (calc_id d70761bd-d734-4a3a-9105-9686efe1f526). Amendment No. 2 effective 2026-04-01 permits addback of restructuring charges capped at $500,000 (Amd 2 §3). Financials Q2 2026 show restructuring charges $620,000 (Fin Q2 2026 §2). Addback capped at 500k could not be applied due to data mismatch.",
+  "decided_by": "agent",
+  "code_outcome": "exception",
+  "recommendation": "escalate",
+  "agent_raw_recommendation": "escalate",
+  "verdict_changed_by_guardrail": false,
+  "explanation_source": "agent",
+  "mapping_flag": null,
+  "suggested_tag": "true_breach",
+  "confidence_basis": "The boarded terms do not include any addbacks, producing DSCR 1.12 fail; the approved amendment effective 2026-04-01 allows addback of restructuring charges capped at 500000, but the borrower's financials list 620000 restructuring charges, above the cap; trying to apply the capped 500000 addback failed due to mismatched figure.",
+  "claims": [
+    {
+      "text": "Minimum DSCR is 1.25 based on trailing four quarters to June 30, 2026, with numerator base Consolidated EBITDA minus unfinanced capex and cash taxes, denominator scheduled principal plus cash interest.",
+      "quote": "(a) Minimum Ratio. The Borrower shall not permit the Debt Service Coverage Ratio, tested as of the last day of each fiscal quarter on a trailing four-quarter basis, to be less than 1.25 to 1.00.",
+      "citation": "CA §7.11"
+    },
+    {
+      "text": "Debt Service means scheduled principal plus cash interest paid during the period.",
+      "quote": "\"Debt Service\" means, for any period, the sum of (i) scheduled principal payments on Indebtedness and (ii) cash interest paid on Indebtedness, in each case during that period.",
+      "citation": "CA §1.01"
+    },
+    {
+      "text": "Debt Service Coverage Ratio means Consolidated EBITDA plus add-backs permitted by Section 7.11, minus unfinanced capex and cash taxes, divided by Debt Service.",
+      "quote": "\"Debt Service Coverage Ratio\" means, for any period, the ratio of (i) Consolidated EBITDA for that period, plus any add-back permitted by Section 7.11, minus Unfinanced Capital Expenditures and cash taxes paid during that period, to (ii) Debt Service for that period.",
+      "citation": "CA §1.01"
+    },
+    {
+      "text": "Amendment No. 2 effective April 1, 2026 permits addback of restructuring charges up to $500,000 for any test period.",
+      "quote": "(a) Section 7.11(b) of the Credit Agreement is amended so that, in addition to any add-back already permitted there, the Borrower may add back restructuring charges, to the extent deducted in determining net income, in an aggregate amount not to exceed $500,000 for any test period.",
+      "citation": "Amd 2 §3"
+    },
+    {
+      "text": "Financials Q2 2026 report restructuring charges as $620,000, exceeding the $500,000 cap.",
+      "quote": "Restructuring charges: 620,000",
+      "citation": "Fin Q2 2026 §2"
+    }
+  ],
+  "guardrail_notes": [],
+  "steps": 7,
+  "provenance": {
+    "source": "CreditScout recorded eval run (real run output, not a stand-in)",
+    "run_id": "eval-20261113T161940Z-cold",
+    "pass": "cold",
+    "eval_run_row_id": "b0dab588-0a19-45d2-8bce-012905ce9a95",
+    "pass_recorded_at": "2026-11-13T16:30:24.559854+00:00",
+    "creditscout_commit": "46f368c",
+    "orchestrator_model": "gpt-4.1-mini",
+    "specialist_model": "gpt-5-mini",
+    "exported_at": "2026-11-13T16:38:22.962Z",
+    "test_id": "c092300c-abd6-4ab0-af79-24e9160bba99",
+    "exception_id": "bb8e3ac3-0083-4b82-93de-accf53721a58",
+    "casefile_id": "14dce14b-71dd-4d5a-a1d4-8d84dc89302e",
+    "governing_calc_id": "d70761bd-d734-4a3a-9105-9686efe1f526",
+    "recorded_at": "2026-11-13T16:19:46.869065+00:00",
+    "computed_dscr": 1.12,
+    "reported_dscr": 1.12,
+    "threshold": 1.25
+  }
+}

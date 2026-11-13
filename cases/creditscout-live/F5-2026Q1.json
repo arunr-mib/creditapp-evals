@@ -1,0 +1,14 @@
+{
+  "id": "F5-2026Q1",
+  "bucket": "reporting-discrepancy",
+  "loan": "Coastal Marine",
+  "facility": "F5",
+  "test_period_end": "2026-03-31",
+  "synthetic": true,
+  "oracle_source": { "product": "CreditScout", "file": "data/expected-values-template.csv", "commit": "46f368c", "owner_signed_off_in_creditscout": "YES", "signed_in_this_repo": false },
+  "oracle": { "expected_outcome": "variance_logged_no_investigation", "expected_tag": null, "reported_dscr": 1.38, "expected_dscr_as_tested": 1.29, "expected_dscr_remapped": null },
+  "terms": { "min_dscr": 1.25, "terms_version_boarded": 1, "addbacks": "dry-dock and vessel overhaul charges=900000 (cap 500000)" },
+  "financials": { "ebitda": 6028000, "unfinanced_capex": 420000, "cash_taxes": 380000, "scheduled_principal": 3000000, "cash_interest": 1440000 },
+  "expected": { "verdict": "no-breach", "dscr": 1.29, "citations": [] },
+  "expected_derivation": "verdict: oracle outcome variance_logged_no_investigation maps to no-breach (the covenant passes on our figure; the borrower's overstatement is logged, not investigated). dscr: the oracle's as-tested figure. citations: none, because this case is decided by CreditScout's deterministic test with no agent investigation."
+}

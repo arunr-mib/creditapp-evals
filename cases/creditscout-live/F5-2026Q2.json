@@ -1,0 +1,14 @@
+{
+  "id": "F5-2026Q2",
+  "bucket": "amendment-saves-it",
+  "loan": "Coastal Marine",
+  "facility": "F5",
+  "test_period_end": "2026-06-30",
+  "synthetic": true,
+  "oracle_source": { "product": "CreditScout", "file": "data/expected-values-template.csv", "commit": "46f368c", "owner_signed_off_in_creditscout": "YES", "signed_in_this_repo": false },
+  "oracle": { "expected_outcome": "resolve", "expected_tag": "amendment_addback", "reported_dscr": 1.30, "expected_dscr_as_tested": 1.12, "expected_dscr_remapped": 1.30 },
+  "terms": { "min_dscr": 1.25, "terms_version_boarded": 1, "addbacks": "dry-dock and vessel overhaul charges=520000 (cap 500000); fuel hedging mark-to-market losses=950000 (cap 800000 under unboarded v2 only)" },
+  "financials": { "ebitda": 5313000, "unfinanced_capex": 450000, "cash_taxes": 390000, "scheduled_principal": 3000000, "cash_interest": 1440000 },
+  "expected": { "verdict": "no-breach", "dscr": 1.30, "citations": ["CA §7.11", "Amd 2 §3(a)"] },
+  "expected_derivation": "verdict: oracle outcome resolve maps to no-breach. dscr: the oracle's remapped figure, because a resolve rests on the unboarded Amendment No. 2 fuel-hedging add-back. citations: not in the oracle; taken from CreditScout's seed data/facilities.js, the threshold clause (CA §7.11) and the amendment add-back clause (Amd 2 §3(a)). Chosen by this repo, not owner-signed."
+}

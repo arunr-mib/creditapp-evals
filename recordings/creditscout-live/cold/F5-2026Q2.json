@@ -1,0 +1,52 @@
+{
+  "case_id": "F5-2026Q2",
+  "pass": "cold",
+  "verdict": "abstain",
+  "dscr": 1.12,
+  "citations": [],
+  "explanation": "The investigation reached its step cap before the agent produced an answer, so it is incomplete. Review the trace to see what was investigated.",
+  "decided_by": "agent",
+  "code_outcome": "exception",
+  "recommendation": "abstain",
+  "agent_raw_recommendation": null,
+  "verdict_changed_by_guardrail": false,
+  "explanation_source": "creditscout-code",
+  "mapping_flag": null,
+  "suggested_tag": "other",
+  "confidence_basis": "No verifiable answer was produced.",
+  "claims": [],
+  "guardrail_notes": [
+    {
+      "check": "max_steps",
+      "layer": "policy",
+      "action": "end_run",
+      "detail": "the investigation reached the step cap of 12 after 12 steps and was stopped"
+    },
+    {
+      "check": "step_cap",
+      "layer": "policy",
+      "action": "abstain",
+      "detail": "the investigation reached the step cap before the agent produced an answer \u2014 investigation incomplete"
+    }
+  ],
+  "steps": 12,
+  "provenance": {
+    "source": "CreditScout recorded eval run (real run output, not a stand-in)",
+    "run_id": "eval-20261113T161940Z-cold",
+    "pass": "cold",
+    "eval_run_row_id": "b0dab588-0a19-45d2-8bce-012905ce9a95",
+    "pass_recorded_at": "2026-11-13T16:30:24.559854+00:00",
+    "creditscout_commit": "46f368c",
+    "orchestrator_model": "gpt-4.1-mini",
+    "specialist_model": "gpt-5-mini",
+    "exported_at": "2026-11-13T16:38:22.962Z",
+    "test_id": "af0385da-6ca5-47a5-904a-ac925e641b40",
+    "exception_id": "683399cf-9269-4be8-855d-13ee5ed9a956",
+    "casefile_id": "077a393a-73ee-47bf-b681-b463b8f1be45",
+    "governing_calc_id": "dd3e2a0b-4f6d-4a7a-a1db-da9c24f07ed1",
+    "recorded_at": "2026-11-13T16:22:58.83584+00:00",
+    "computed_dscr": 1.12,
+    "reported_dscr": 1.3,
+    "threshold": 1.25
+  }
+}

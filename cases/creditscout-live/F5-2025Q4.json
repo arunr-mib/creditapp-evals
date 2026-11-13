@@ -1,0 +1,14 @@
+{
+  "id": "F5-2025Q4",
+  "bucket": "performing-no-exception",
+  "loan": "Coastal Marine",
+  "facility": "F5",
+  "test_period_end": "2025-12-31",
+  "synthetic": true,
+  "oracle_source": { "product": "CreditScout", "file": "data/expected-values-template.csv", "commit": "46f368c", "owner_signed_off_in_creditscout": "YES", "signed_in_this_repo": false },
+  "oracle": { "expected_outcome": "compliant_no_action", "expected_tag": null, "reported_dscr": 1.41, "expected_dscr_as_tested": 1.41, "expected_dscr_remapped": null },
+  "terms": { "min_dscr": 1.25, "terms_version_boarded": 1, "addbacks": "dry-dock and vessel overhaul charges=300000 (cap 500000)" },
+  "financials": { "ebitda": 6720000, "unfinanced_capex": 400000, "cash_taxes": 360000, "scheduled_principal": 3000000, "cash_interest": 1440000 },
+  "expected": { "verdict": "no-breach", "dscr": 1.41, "citations": [] },
+  "expected_derivation": "verdict: oracle outcome compliant_no_action maps to no-breach. dscr: the oracle's as-tested figure. citations: none, because this case is decided by CreditScout's deterministic test with no agent investigation, so there is no agent citation to check."
+}

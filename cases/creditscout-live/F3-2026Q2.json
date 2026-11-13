@@ -1,0 +1,14 @@
+{
+  "id": "F3-2026Q2",
+  "bucket": "true-breach",
+  "loan": "Northgate Foods",
+  "facility": "F3",
+  "test_period_end": "2026-06-30",
+  "synthetic": true,
+  "oracle_source": { "product": "CreditScout", "file": "data/expected-values-template.csv", "commit": "46f368c", "owner_signed_off_in_creditscout": "YES", "signed_in_this_repo": false },
+  "oracle": { "expected_outcome": "escalate", "expected_tag": "true_breach", "reported_dscr": 1.31, "expected_dscr_as_tested": 1.08, "expected_dscr_remapped": null },
+  "terms": { "min_dscr": 1.25, "terms_version_boarded": 1, "addbacks": "owner compensation normalisation=530000 (no clause permits this)" },
+  "financials": { "ebitda": 2884000, "unfinanced_capex": 220000, "cash_taxes": 180000, "scheduled_principal": 1600000, "cash_interest": 700000 },
+  "expected": { "verdict": "breach", "dscr": 1.08, "citations": ["CA §7.11"] },
+  "expected_derivation": "verdict: oracle outcome escalate maps to breach. dscr: the oracle's as-tested figure. citations: not in the oracle; the threshold clause (CA §7.11) from CreditScout's seed data/facilities.js. Chosen by this repo, not owner-signed."
+}
