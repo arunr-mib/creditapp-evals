@@ -1,11 +1,12 @@
 {
   "name": "creditapp-evals",
   "version": "1.0.0",
-  "description": "A standalone eval harness and scorecard for agentic credit products — proves an agent's answers are right, grounded, and cheap, not just that it ran.",
+  "description": "A standalone eval harness and scorecard for agentic credit products. It grades real recorded CreditScout runs and a hand-written regression suite, checking that answers are right and grounded, not just that the agent ran.",
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "node --test grader/grade.test.js",
-    "eval": "node runner/run.mjs"
+    "test": "node --test grader/grade.test.js runner/suite.test.js tools/creditscout-mapping.test.js",
+    "eval": "node runner/run.mjs",
+    "export:creditscout": "node tools/export-creditscout-run.mjs"
   }
 }

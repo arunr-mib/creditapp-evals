@@ -1,0 +1,14 @@
+{
+  "id": "F1-2026Q2",
+  "bucket": "amendment-saves-it",
+  "loan": "Harbor Logistics",
+  "facility": "F1",
+  "test_period_end": "2026-06-30",
+  "synthetic": true,
+  "oracle_source": { "product": "CreditScout", "file": "data/expected-values-template.csv", "commit": "46f368c", "owner_signed_off_in_creditscout": "YES", "signed_in_this_repo": false },
+  "oracle": { "expected_outcome": "resolve", "expected_tag": "amendment_addback", "reported_dscr": 1.12, "expected_dscr_as_tested": 1.12, "expected_dscr_remapped": 1.28 },
+  "terms": { "min_dscr": 1.25, "terms_version_boarded": 1, "addbacks": "restructuring charges=620000 (cap 500000 under unboarded v2 only)" },
+  "financials": { "ebitda": 4020000, "unfinanced_capex": 300000, "cash_taxes": 250000, "scheduled_principal": 2000000, "cash_interest": 1100000 },
+  "expected": { "verdict": "no-breach", "dscr": 1.28, "citations": ["CA §7.11", "Amd 2 §3(a)"] },
+  "expected_derivation": "verdict: oracle outcome resolve maps to no-breach. dscr: the oracle's remapped figure, because a resolve rests on the unboarded Amendment No. 2 add-back. citations: not in the oracle (it has no citation column); taken from CreditScout's seed data/facilities.js, the threshold clause (CA §7.11) and the amendment add-back clause (Amd 2 §3(a)). Chosen by this repo, not owner-signed."
+}

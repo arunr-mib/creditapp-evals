@@ -8,78 +8,174 @@
   :root { color-scheme: light; }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f8fa; color: #1e293b; }
-  header { padding: 32px 24px 16px; max-width: 980px; margin: 0 auto; }
+  header { padding: 32px 16px 16px; max-width: 1040px; margin: 0 auto; }
   h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 17px; margin: 0 0 6px; }
+  h3 { font-size: 14px; margin: 18px 0 8px; }
   .sub { color: #64748b; font-size: 13px; }
-  main { max-width: 980px; margin: 0 auto; padding: 0 24px 64px; }
-  .product-block { margin-top: 28px; }
-  .product-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  main { max-width: 1040px; margin: 0 auto; padding: 0 16px 64px; }
+  .product-block { margin-top: 32px; }
+  .kind { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px; }
+  .kind.live { background: #dbeafe; color: #1e3a8a; }
+  .kind.standin { background: #e2e8f0; color: #334155; }
+  .meta { font-size: 13px; color: #475569; line-height: 1.6; margin: 6px 0 12px; }
+  .meta code { font-size: 12px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 12px; }
   .card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 14px; }
   .card .label { font-size: 11px; color: #64748b; margin-bottom: 4px; }
   .card .value { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
   .ok { color: #16a34a; }
   .bad { color: #dc2626; }
-  table { width: 100%; border-collapse: collapse; background: white; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; font-size: 13px; }
-  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #f1f5f9; }
-  th { background: #f8fafc; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: #64748b; }
+  .table-wrap { overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 10px; background: white; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  th { background: #f8fafc; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: #64748b; white-space: nowrap; }
   tr:last-child td { border-bottom: none; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .pass { color: #16a34a; font-weight: 600; }
   .fail { color: #dc2626; font-weight: 600; }
-  .label-tag { font-family: ui-monospace, monospace; font-size: 11px; background: #fef2f2; color: #991b1b; padding: 2px 6px; border-radius: 4px; }
+  .label-tag { font-family: ui-monospace, monospace; font-size: 11px; background: #fef2f2; color: #991b1b; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+  .note-cell { color: #475569; font-size: 12px; min-width: 220px; }
+  .gate { font-size: 13px; margin: 10px 0 0; }
   .empty { color: #94a3b8; font-size: 13px; padding: 24px; text-align: center; }
+  .notice { margin-top: 14px; background: #fffbeb; border: 1px solid #fcd34d; color: #78350f; border-radius: 10px; padding: 12px 14px; font-size: 13px; line-height: 1.55; }
+  .notice a { color: inherit; }
+  .limits { margin-top: 14px; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 16px; font-size: 13px; line-height: 1.55; }
+  .limits ul { margin: 6px 0 0; padding-left: 18px; }
+  @media (max-width: 600px) { .card .value { font-size: 17px; } th, td { padding: 6px 8px; } }
 </style>
 </head>
 <body>
 <header>
   <h1>creditapp-evals</h1>
-  <div class="sub" id="meta">loading…</div>
+  <div class="sub" id="meta">loading...</div>
+  <div class="notice" role="note">
+    <strong>Two suites on this page.</strong>
+    <strong>Real recorded runs</strong> (<code>creditscout-live</code>): CreditScout's actual agent output from two recorded eval passes on 2026-11-13, exported from its database and graded here against expected values taken from CreditScout's owner-signed oracle. Every result is shown, pass or fail.
+    <strong>Stand-in regression suite</strong> (<code>creditscout</code>): 15 owner-signed cases graded against hand-written responses. It proves the grader and the CI gate work; it says nothing about how the agent performs.
+    <a href="https://github.com/arunr-mib/creditapp-evals#readme">Details in the README</a>.
+  </div>
 </header>
 <main id="main"></main>
 <script>
+const DATA_URL = './data/latest.json';
+
 async function load() {
   const main = document.getElementById('main');
   try {
-    const res = await fetch('./data/latest.json');
+    const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error('no data yet');
     const data = await res.json();
-    document.getElementById('meta').textContent =
-      'Last run: ' + new Date(data.generated_at).toLocaleString();
-
-    main.innerHTML = data.products.map(p => renderProduct(p)).join('');
+    document.getElementById('meta').textContent = 'Last graded: ' + new Date(data.generated_at).toLocaleString();
+    const live = data.products.filter(p => p.kind === 'recorded-live');
+    const rest = data.products.filter(p => p.kind !== 'recorded-live');
+    main.innerHTML = live.map(renderLive).join('') + rest.map(renderStandIn).join('');
   } catch (e) {
     document.getElementById('meta').textContent = 'No eval run recorded yet.';
-    main.innerHTML = '<div class="empty">Run `npm run eval` to generate the scorecard.</div>';
+    main.innerHTML = '<div class="empty">Run npm run eval to generate the scorecard.</div>';
   }
 }
 
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
 function pct(n) { return (n * 100).toFixed(1) + '%'; }
+function num(n) { return n === null || n === undefined ? 'n/a' : Number(n).toFixed(2); }
+function day(iso) { return iso ? iso.slice(0, 10) : 'n/a'; }
 
-function renderProduct(p) {
-  const a = p.aggregate;
+function cards(a, counts, gatedOnAccuracy) {
+  return `
+    <div class="cards">
+      <div class="card"><div class="label">Verdict accuracy${gatedOnAccuracy ? '' : ' (reported, not gated)'}</div><div class="value ${a.verdict_accuracy >= 0.9 ? 'ok' : 'bad'}">${pct(a.verdict_accuracy)}</div></div>
+      <div class="card"><div class="label">Cases passed</div><div class="value">${counts ? counts.passed + ' / ' + a.total : a.total}</div></div>
+      <div class="card"><div class="label">Citation accuracy</div><div class="value">${pct(a.citation_accuracy)}</div></div>
+      <div class="card"><div class="label">Hallucination rate</div><div class="value ${a.hallucination_rate === 0 ? 'ok' : 'bad'}">${pct(a.hallucination_rate)}</div></div>
+      <div class="card"><div class="label">False resolve rate</div><div class="value ${a.false_resolve_rate === 0 ? 'ok' : 'bad'}">${pct(a.false_resolve_rate)}</div></div>
+      <div class="card"><div class="label">Abstentions</div><div class="value">${a.abstention_count}</div></div>
+    </div>`;
+}
+
+function caseNote(r) {
+  const notes = [];
+  if (r.decided_by === 'code') notes.push('Decided by CreditScout\'s deterministic test; no exception, so no agent ran and there is no agent explanation.');
+  if (r.explanation_source === 'creditscout-code') notes.push('Hit the 12-step cap before answering; the abstain was written by CreditScout code.');
+  if (r.verdict_changed_by_guardrail) notes.push(`Agent answered ${esc(r.agent_raw_recommendation)}, but quoted a DSCR with no logged calculation; CreditScout's guardrail downgraded it to ${esc(r.recommendation)}.`);
+  if (r.decided_by === 'agent' && r.steps !== undefined && r.steps !== null) notes.push(`${r.steps} steps.`);
+  return notes.join(' ');
+}
+
+function liveTable(p) {
   const rows = p.results.map(r => `
     <tr>
-      <td>${r.case_id}</td>
-      <td>${r.bucket || ''}</td>
+      <td>${esc(r.case_id)}<br><span class="sub">${esc(r.loan)}</span></td>
+      <td>${esc(r.expected_verdict)}</td>
+      <td class="num">${num(r.expected_dscr)}</td>
+      <td>${esc(r.actual_verdict ?? 'null')}${r.recommendation ? `<br><span class="sub">${esc(r.recommendation)}</span>` : ''}</td>
+      <td class="num">${num(r.actual_dscr)}</td>
       <td class="${r.pass ? 'pass' : 'fail'}">${r.pass ? 'PASS' : 'FAIL'}</td>
-      <td>${r.failure_label ? `<span class="label-tag">${r.failure_label}</span>` : '—'}</td>
+      <td>${r.failure_label ? `<span class="label-tag">${esc(r.failure_label)}</span>` : 'none'}</td>
+      <td class="note-cell">${caseNote(r)}${r.casefile_id ? `<br><span class="sub">casefile ${esc(r.casefile_id.slice(0, 8))}</span>` : ''}</td>
     </tr>`).join('');
-
   return `
-    <div class="product-block">
-      <div class="product-title">${p.product}: ${p.case_count} cases</div>
-      <div class="cards">
-        <div class="card"><div class="label">Verdict accuracy</div><div class="value ${a.verdict_accuracy >= 0.9 ? 'ok' : 'bad'}">${pct(a.verdict_accuracy)}</div></div>
-        <div class="card"><div class="label">Citation accuracy</div><div class="value">${pct(a.citation_accuracy)}</div></div>
-        <div class="card"><div class="label">Hallucination rate</div><div class="value ${a.hallucination_rate === 0 ? 'ok' : 'bad'}">${pct(a.hallucination_rate)}</div></div>
-        <div class="card"><div class="label">False resolve rate</div><div class="value ${a.false_resolve_rate === 0 ? 'ok' : 'bad'}">${pct(a.false_resolve_rate)}</div></div>
-        <div class="card"><div class="label">Abstentions</div><div class="value">${a.abstention_count}</div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Case</th><th>Expected</th><th>Exp. DSCR</th><th>Got</th><th>Got DSCR</th><th>Result</th><th>Failure label</th><th>Notes</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+}
+
+function renderLive(p) {
+  const all = p.passes.flatMap(x => x.provenance.run_ids);
+  const pv = p.passes[0]?.provenance ?? {};
+  const passes = p.passes.map(x => `
+    <h3>${esc(x.pass)} pass: ${x.counts.passed} of ${x.aggregate.total} cases pass <span class="sub">(run <code>${esc(x.provenance.run_ids.join(', '))}</code>)</span></h3>
+    ${cards(x.aggregate, x.counts, false)}
+    ${liveTable(x)}
+    <p class="gate">Safety gate: <strong class="${x.gate.passed ? 'ok' : 'bad'}">${x.gate.passed ? 'passed' : 'FAILED: ' + esc(x.gate.reasons.join('; '))}</strong> (zero false resolves, zero invented numbers, every case recorded).</p>`).join('');
+  return `
+    <section class="product-block">
+      <span class="kind live">Real recorded runs</span>
+      <h2>${esc(p.title || p.product)}: ${p.case_count} cases x ${p.passes.length} passes</h2>
+      <div class="meta">
+        Recorded ${esc(day(pv.recorded_from))} with CreditScout commit <code>${esc((pv.creditscout_commits || []).join(', '))}</code>;
+        orchestrator <code>${esc((pv.orchestrator_models || []).join(', '))}</code>, specialists <code>${esc((pv.specialist_models || []).join(', '))}</code>.
+        Run ids: ${all.map(id => `<code>${esc(id)}</code>`).join(', ')}.
+        Expected values come from CreditScout's owner-signed oracle; they were not separately signed in this repo.
+        Accuracy is <strong>reported, not gated</strong>: CI fails this product only on a false resolve, an invented number, or a missing recording.
       </div>
-      <table>
+      ${passes}
+      <div class="limits">
+        <strong>Limits.</strong>
+        <ul>
+          <li>Five cases, one run per pass. Two of the five are decided by code, not the agent, so three agent investigations per pass.</li>
+          <li>Run-to-run variance is real: an earlier cold pass the same day scored 5/5 on CreditScout's own harness; this one scored 3/5.</li>
+          <li>Five further signed cases were skipped because those borrowers are not onboarded in CreditScout's database yet.</li>
+          <li>The grader checks the verdict, the DSCR the case relied on, and citations. It does not yet scan explanation text for unlogged figures; see the warm F1 note.</li>
+        </ul>
+        <strong>Next.</strong> All ten signed cases, repeated runs per pass to measure variance, then 100+ cases.
+      </div>
+    </section>`;
+}
+
+function renderStandIn(p) {
+  const x = p.passes ? p.passes[0] : { results: p.results, aggregate: p.aggregate, counts: null, gate: null };
+  const rows = x.results.map(r => `
+    <tr>
+      <td>${esc(r.case_id)}</td>
+      <td>${esc(r.bucket || '')}</td>
+      <td class="${r.pass ? 'pass' : 'fail'}">${r.pass ? 'PASS' : 'FAIL'}</td>
+      <td>${r.failure_label ? `<span class="label-tag">${esc(r.failure_label)}</span>` : 'none'}</td>
+    </tr>`).join('');
+  return `
+    <section class="product-block">
+      <span class="kind standin">Regression suite: hand-written stand-in responses</span>
+      <h2>${esc(p.product)}: ${p.case_count} cases</h2>
+      <div class="meta">Owner-signed cases graded against hand-authored responses, not agent output. 100% here means the grader and the gate work. Gate: verdict accuracy of at least 90%, no invented number, no false resolve.${x.gate ? ` Status: <strong class="${x.gate.passed ? 'ok' : 'bad'}">${x.gate.passed ? 'within gate' : 'FAILED'}</strong>.` : ''}</div>
+      ${cards(x.aggregate, x.counts, true)}
+      <div class="table-wrap"><table>
         <thead><tr><th>Case</th><th>Bucket</th><th>Result</th><th>Failure label</th></tr></thead>
         <tbody>${rows}</tbody>
-      </table>
-    </div>`;
+      </table></div>
+    </section>`;
 }
 
 load();

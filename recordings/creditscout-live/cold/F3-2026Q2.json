@@ -1,0 +1,71 @@
+{
+  "case_id": "F3-2026Q2",
+  "pass": "cold",
+  "verdict": "breach",
+  "dscr": 1.08,
+  "citations": [
+    "CA §7.11(a)",
+    "CA §7.11(b)",
+    "CA §1.01",
+    "CC Q2 2026 §3",
+    "CA §8.02"
+  ],
+  "explanation": "The credit agreement section 7.11(b) disallows add-backs except if expressly provided or amended. No amendment or executed waiver permitting the owner's compensation normalization add-back is on file, only an unexecuted waiver request. Our calculation with the boarded terms (no add-backs) matches our computed DSCR of 1.08, below the required 1.25 threshold. The borrower's higher DSCR of 1.31 includes an unsupported add-back of 530,000. Therefore, our figure reflects the true covenant terms and indicates a breach.",
+  "decided_by": "agent",
+  "code_outcome": "exception",
+  "recommendation": "escalate",
+  "agent_raw_recommendation": "escalate",
+  "verdict_changed_by_guardrail": false,
+  "explanation_source": "agent",
+  "mapping_flag": null,
+  "suggested_tag": "true_breach",
+  "confidence_basis": "The owner's compensation normalization add-back applied by the borrower is not permitted by the credit agreement and has not been authorised by an executed waiver or amendment; our calculation based on boarded terms shows a failing DSCR of 1.08, below the 1.25 minimum.",
+  "claims": [
+    {
+      "text": "The Borrower shall not permit the Debt Service Coverage Ratio, tested as of the last day of each fiscal quarter on a trailing four-quarter basis, to be less than 1.25 to 1.00.",
+      "quote": "The Borrower shall not permit the Debt Service Coverage Ratio, tested as of the last day of each fiscal quarter on a trailing four-quarter basis, to be less than 1.25 to 1.00.",
+      "citation": "CA §7.11(a)"
+    },
+    {
+      "text": "No add-back or other adjustment shall be made to Consolidated EBITDA for purposes of this Section 7.11, except as expressly provided in this Agreement as amended in writing.",
+      "quote": "No add-back or other adjustment shall be made to Consolidated EBITDA for purposes of this Section 7.11, except as expressly provided in this Agreement as amended in writing.",
+      "citation": "CA §7.11(b)"
+    },
+    {
+      "text": "The Debt Service Coverage Ratio means, for any period, the ratio of Consolidated EBITDA plus any add-back permitted by Section 7.11 minus Unfinanced Capital Expenditures and cash taxes paid during that period, to Debt Service for that period.",
+      "quote": "\"Debt Service Coverage Ratio\" means, for any period, the ratio of (i) Consolidated EBITDA for that period, plus any add-back permitted by Section 7.11, minus Unfinanced Capital Expenditures and cash taxes paid during that period, to (ii) Debt Service for that period.",
+      "citation": "CA §1.01"
+    },
+    {
+      "text": "Add-back applied \u2014 owner compensation normalisation: 530,000",
+      "quote": "§3 Add-Backs Applied\nAdd-back applied \u2014 owner compensation normalisation: 530,000",
+      "citation": "CC Q2 2026 §3"
+    },
+    {
+      "text": "No waiver of any covenant or Event of Default, and no amendment of this Agreement, is effective unless it is in writing and signed by the Lender. A request for a waiver is not a waiver.",
+      "quote": "No waiver of any covenant or Event of Default, and no amendment of this Agreement, is effective unless it is in writing and signed by the Lender. A request for a waiver is not a waiver.",
+      "citation": "CA §8.02"
+    }
+  ],
+  "guardrail_notes": [],
+  "steps": 7,
+  "provenance": {
+    "source": "CreditScout recorded eval run (real run output, not a stand-in)",
+    "run_id": "eval-20261113T161940Z-cold",
+    "pass": "cold",
+    "eval_run_row_id": "b0dab588-0a19-45d2-8bce-012905ce9a95",
+    "pass_recorded_at": "2026-11-13T16:30:24.559854+00:00",
+    "creditscout_commit": "46f368c",
+    "orchestrator_model": "gpt-4.1-mini",
+    "specialist_model": "gpt-5-mini",
+    "exported_at": "2026-11-13T16:38:22.962Z",
+    "test_id": "0d0122e9-6245-4be7-ba9b-2376b9950c11",
+    "exception_id": "9f25fd0e-1966-4d37-a77e-17d4b8725dea",
+    "casefile_id": "833618cb-d29f-4456-9c69-b4d97bea03ef",
+    "governing_calc_id": "edc4e0c9-26dc-4d7d-8a98-e61dabb14def",
+    "recorded_at": "2026-11-13T16:21:18.483754+00:00",
+    "computed_dscr": 1.08,
+    "reported_dscr": 1.31,
+    "threshold": 1.25
+  }
+}

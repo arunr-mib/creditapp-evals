@@ -1,0 +1,28 @@
+{
+  "case_id": "F5-2025Q4",
+  "pass": "cold",
+  "verdict": "no-breach",
+  "dscr": 1.41,
+  "citations": [],
+  "explanation": null,
+  "decided_by": "code",
+  "code_outcome": "compliant",
+  "decided_by_note": "No exception was raised, so no agent investigation ran. CreditScout's deterministic quarterly test decided this case; there is no agent explanation and none is invented here.",
+  "provenance": {
+    "source": "CreditScout recorded eval run (real run output, not a stand-in)",
+    "run_id": "eval-20261113T161940Z-cold",
+    "pass": "cold",
+    "eval_run_row_id": "b0dab588-0a19-45d2-8bce-012905ce9a95",
+    "pass_recorded_at": "2026-11-13T16:30:24.559854+00:00",
+    "creditscout_commit": "46f368c",
+    "orchestrator_model": "gpt-4.1-mini",
+    "specialist_model": "gpt-5-mini",
+    "exported_at": "2026-11-13T16:38:22.962Z",
+    "test_id": "d8345903-618d-4231-bb41-8c7e3d917be4",
+    "casefile_id": null,
+    "recorded_at": "2026-11-13T16:22:53.24577+00:00",
+    "computed_dscr": 1.41,
+    "reported_dscr": 1.41,
+    "threshold": 1.25
+  }
+}
